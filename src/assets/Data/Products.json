@@ -1,0 +1,7 @@
+[
+    {"ID":1,"Name":"Product1","Quantity":5,"Price":50,"Img":"../assets/p1.png"},
+    {"ID":2,"Name":"Product2","Quantity":7,"Price":75,"Img":"../assets/prod2.png"},
+    {"ID":3,"Name":"Product3","Quantity":9,"Price":65,"Img":"../assets/prod3.jpg"},
+    {"ID":4,"Name":"Product4","Quantity":2,"Price":45,"Img":"../assets/p1.png"},
+    {"ID":5,"Name":"Product5","Quantity":1,"Price":66,"Img":"../assets/prod2.png"}
+]

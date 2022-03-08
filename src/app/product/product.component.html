@@ -1,5 +1,5 @@
 <h1>{{ storeName|uppercase }}</h1>
-
+<h2>{{errMsg}}</h2>
 <div *ngIf="noTable; then thenBlock else elseBlock"></div>
 <ng-template #thenBlock>
     <div class="dropdown">
@@ -26,12 +26,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let prod of productList;index as i;">
+            <tr *ngFor="let prod of productList">
                 <th scope="row">{{prod.ID}}</th>
                 <td>{{prod.Name}}</td>
                 <td>{{prod.Quantity}}</td>
                 <td>{{prod.Price|currency}}</td>
-                <td><img [src]="productList[i].Img" height="150" /></td>
+                <td><img [src]="prod.Img" height="150" /></td>
             </tr>
 
         </tbody>
@@ -42,13 +42,13 @@
             <label for="nameInp" class="col-form-label">Name</label>
             <input type="text" id="nameInp" class="form-control mb-3" (keyup)="tttt($event)">
         </div>
-        <div class="col-auto">
-            <button type="button" class="btn btn-primary " (click)="hideTable()">Buy</button>
-        </div>
     </div>
     <h3 *ngIf="!noDiscount"> We offer an explicit discount of {{ discount|percent }}</h3>
 </ng-template>
+<div class="col-auto">
+    <button type="button" class="btn btn-primary " (click)="renderValues()">Show Products</button>
+</div>
 <ng-template #elseBlock>
-    <h2>Thanks for purshasing from Our Store {{custName}}</h2>
+    <!-- <h2>Thanks for purshasing from Our Store {{custName}}</h2> -->
 </ng-template>
 <!-- <img [src]="productList[0].Img" height="200" /> -->
