@@ -52,8 +52,7 @@ export class ProductComponent implements OnInit {
   hideTable() {
     
     this.noTable=false;
-    console.log(document.getElementById("nameInp")?.title)
-    console.log(this.custName)
+    
     // this.productEvent.emit()
   }
 tttt(event:any){
