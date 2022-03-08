@@ -12,6 +12,7 @@
                 <a class="dropdown-item" href="#" *ngFor="let cat of categoryList">{{cat.Name}}</a>
             </li>
         </ul>
+
     </div>
 
     <table class="table table-hover">
@@ -27,11 +28,11 @@
         </thead>
         <tbody>
             <tr *ngFor="let prod of productList">
-                <th scope="row">{{prod.ID}}</th>
-                <td>{{prod.Name}}</td>
-                <td>{{prod.Quantity}}</td>
-                <td>{{prod.Price|currency}}</td>
-                <td><img [src]="prod.Img" height="150" /></td>
+                <th scope="row">{{prod.id}}</th>
+                <td>{{prod.name}}</td>
+                <td>{{prod.quantity}}</td>
+                <td>{{prod.price|currency}}</td>
+                <td><img [src]="prod.img" height="70" /></td>
             </tr>
 
         </tbody>
@@ -45,10 +46,41 @@
     </div>
     <h3 *ngIf="!noDiscount"> We offer an explicit discount of {{ discount|percent }}</h3>
 </ng-template>
-<div class="col-auto">
-    <button type="button" class="btn btn-primary " (click)="renderValues()">Show Products</button>
-</div>
+
 <ng-template #elseBlock>
+    <div class="col-auto">
+        <button type="button" class="btn btn-primary " (click)="renderValues()">Show Products</button>
+    </div>
     <!-- <h2>Thanks for purshasing from Our Store {{custName}}</h2> -->
+</ng-template>
+
+<div *ngIf="singleProduct; then thenBlock1 else elseBlock1"></div>
+<ng-template #thenBlock1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Img</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{prod5?.id}}</th>
+                <td>{{prod5?.name}}</td>
+                <td>{{prod5?.quantity}}</td>
+                <td>{{prod5?.price|currency}}</td>
+                <td><img [src]="prod5?.img" height="70" /></td>
+            </tr>
+
+        </tbody>
+    </table>
+</ng-template>
+<ng-template #elseBlock1>
+    <button type="button" class="btn btn-primary " (click)="hideTable()">Show Product 3</button>
+
 </ng-template>
 <!-- <img [src]="productList[0].Img" height="200" /> -->

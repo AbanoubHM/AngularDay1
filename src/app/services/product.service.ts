@@ -7,7 +7,7 @@ import { IProduct } from '../sharedClasses/IProduct';
   providedIn: 'root'
 })
 export class ProductService {
-  private _url:string="/assets/Data/Products.json"
+  private _url:string="http://localhost:5033/api/Products"
 
   constructor(private http:HttpClient) { 
     
@@ -17,20 +17,11 @@ export class ProductService {
       return throwError(err.message||"Server Error")
     }))
   }
-  getProductById(prodId:number){
-    if (prodId == NaN) {
-      return null
-    }
-    let prdList:IProduct[]
-    let prd
-    this.getAllProducts().subscribe(dd=>{
-      prd=dd.find(e=>e.ID===prodId)
-      prd=prdList.find(e=>e.ID===prodId)
-    })
-    if (!prd) {
-      return null
-    } else {
-      return prd
-    }
+  getProductById(prodId:number):Observable<IProduct>{
+    //console.log(`${this._url}/${prodId}`);
+    
+    return this.http.get<IProduct>(`${this._url}/${prodId}`).pipe(catchError((err)=>{
+      return throwError(err.message||"Server Error")
+    }))
   }
 }

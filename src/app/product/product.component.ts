@@ -12,18 +12,20 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-errMsg:string=""
+  errMsg:string=""
   custName:string=""
   noTable:boolean=false
   discount:DiscountOffers
   storeName:string
   storeLogo:string
   productList:IProduct[]=[]
-  prod5?:any
+  prod5?:IProduct
   categoryList:ICategory[]
   clientName:string
   isPurshased: boolean
   noDiscount:boolean=false
+  singleProduct:boolean=false
+
   @Output() productEvent=new EventEmitter();
 
   constructor(private productSer:ProductService) {
@@ -58,12 +60,16 @@ errMsg:string=""
     error=>{
       this.errMsg=error
     })
+    //console.log(this.productList);
+    
     this.noTable=true;
   }
   hideTable() {
-    this.prod5=this.productSer.getProductById(3)
-    this.noTable=true;
-    
+    this.productSer.getProductById(3).subscribe(dat=>{
+      this.prod5=dat
+    })
+    this.singleProduct=true;
+    //console.log(this.prod5)
     // this.productEvent.emit()
   }
 tttt(event:any){
