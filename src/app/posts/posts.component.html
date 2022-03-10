@@ -1,0 +1,15 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let pst of postList">
+        <div class="card h-100">
+
+            <div class="card-body">
+                <h5 class="card-title">{{pst.title}}</h5>
+                <!-- <h6 class="card-subtitle mb-2 text-muted">{{pst.email}}</h6> -->
+                <p class="card-text">{{pst.body}}</p>
+                <button type="button" class="btn btn-secondary" (click)="getComments(pst.id)">View comments on post
+                    {{pst.id}}</button>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<h3>comments on Post {{pstId}}</h3>
+<br>
+<div class="row row-cols-1 row-cols-md-1 g-4">
+    <div class="col" *ngFor="let cmnt of comments">
+        <div class="card h-100">
+
+            <div class="card-body">
+                <h5 class="card-title">{{cmnt.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{cmnt.email}}</h6>
+                <p class="card-text">{{cmnt.body}}</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+<div class="btn-group" role="group" aria-label="Basic outlined example">
+    <button (click)="goPrev()" type="button" class="btn btn-outline-primary">Previous</button>
+
+    <button (click)="goNext()" type="button" class="btn btn-outline-primary">Next</button>
+</div>

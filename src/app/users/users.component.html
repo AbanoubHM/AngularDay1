@@ -1,0 +1,15 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let usr of UsrList">
+        <div class="card h-100">
+
+            <div class="card-body">
+                <h5 class="card-title">{{usr.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{usr.email}}</h6>
+                <p class="card-text">{{usr.address.street}} {{usr.address.suite}}
+                    {{usr.address.city}} {{usr.address.zipcode}}</p>
+                <p class="card-text">{{usr.phone}}</p>
+
+            </div>
+        </div>
+    </div>
+</div>
