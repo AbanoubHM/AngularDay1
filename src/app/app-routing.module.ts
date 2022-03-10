@@ -13,6 +13,8 @@ const routes: Routes = [
   {path:'products/:id',component:ProductComponent},
   {path:'posts',component:PostsComponent},
   {path:'posts/:id',component:PostCommentsComponent}
+  
+
 ];
 
 @NgModule({
