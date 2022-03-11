@@ -1,7 +1,7 @@
 import { PostService } from './../services/post.service';
 import { IPost } from './../sharedClasses/IPost';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-posts',
@@ -12,7 +12,7 @@ export class PostsComponent implements OnInit {
 
   postList?:IPost[]
   errMsg:string=''
-  constructor(private postSrv:PostService,private router:Router) { }
+  constructor(private activatedRoute:ActivatedRoute,private postSrv:PostService,private router:Router) { }
 
   ngOnInit(): void {
     this.postSrv.getAllPosts().subscribe(postData=>{
@@ -23,7 +23,7 @@ export class PostsComponent implements OnInit {
     })
   }
   getComments(id:number){
-    this.router.navigate(["/posts",id])
+    this.router.navigate([id],{relativeTo:this.activatedRoute})
   }
 
 }

@@ -11,8 +11,9 @@ const routes: Routes = [
   {path:'products',component:ProductComponent},
   {path:'users',component:UsersComponent},
   {path:'products/:id',component:ProductComponent},
-  {path:'posts',component:PostsComponent},
-  {path:'posts/:id',component:PostCommentsComponent}
+  {path:'posts',component:PostsComponent,
+  children:[{path:':id',component:PostCommentsComponent}]
+  }
   
 
 ];
